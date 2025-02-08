@@ -1,0 +1,42 @@
+[
+    {
+        "month": "2024-02",
+        "totalAmount": 12000,
+        "totalViolations": 45,
+        "teamBreakdown": [
+            { "team": "Frontend", "violations": 12, "amount": 2400 },
+            { "team": "Backend", "violations": 8, "amount": 1600 },
+            { "team": "QA", "violations": 6, "amount": 1200 },
+            { "team": "DevOps", "violations": 7, "amount": 1400 },
+            { "team": "Marketing", "violations": 5, "amount": 1000 },
+            { "team": "UI/UX", "violations": 7, "amount": 1400 }
+        ],
+        "topViolations": [
+            { "rule": "Late to meetings", "count": 15, "amount": 3000 },
+            { "rule": "Shoes outside rack", "count": 10, "amount": 500 },
+            { "rule": "Missing standup", "count": 8, "amount": 1200 },
+            { "rule": "Dress code violation", "count": 7, "amount": 700 },
+            { "rule": "Unauthorized breaks", "count": 5, "amount": 500 }
+        ]
+    },
+    {
+        "month": "2024-01",
+        "totalAmount": 10500,
+        "totalViolations": 40,
+        "teamBreakdown": [
+            { "team": "Frontend", "violations": 10, "amount": 2000 },
+            { "team": "Backend", "violations": 7, "amount": 1400 },
+            { "team": "QA", "violations": 8, "amount": 1600 },
+            { "team": "DevOps", "violations": 5, "amount": 1000 },
+            { "team": "Marketing", "violations": 6, "amount": 1200 },
+            { "team": "UI/UX", "violations": 4, "amount": 800 }
+        ],
+        "topViolations": [
+            { "rule": "Late to meetings", "count": 12, "amount": 2400 },
+            { "rule": "Missing standup", "count": 10, "amount": 1500 },
+            { "rule": "Shoes outside rack", "count": 8, "amount": 400 },
+            { "rule": "Dress code violation", "count": 6, "amount": 600 },
+            { "rule": "Unauthorized breaks", "count": 4, "amount": 400 }
+        ]
+    }
+]

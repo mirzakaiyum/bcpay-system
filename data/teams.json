@@ -1,0 +1,84 @@
+[
+    {
+        "name": "Frontend",
+        "lead": "Md. Arif Rahman",
+        "members": [
+            "Fatema Akter",
+            "Saifuddin Ahmed",
+            "Tahmina Khan",
+            "Rashedul Islam",
+            "Sabrina Yasmin",
+            "Asif Iqbal",
+            "Nusrat Jahan"
+        ]
+    },
+    {
+        "name": "Backend",
+        "lead": "Farhana Ahmed",
+        "members": [
+            "Kamal Hossain",
+            "Sharmin Akter",
+            "Rajib Hasan",
+            "Nasrin Sultana",
+            "Omar Faruk",
+            "Sumaiya Rahman",
+            "Imran Khan",
+            "Laila Begum"
+        ]
+    },
+    {
+        "name": "QA",
+        "lead": "Shakil Mahmud",
+        "members": [
+            "Anika Chowdhury",
+            "Rifat Ahmed",
+            "Sonia Akter",
+            "Tanvir Hossain",
+            "Fahmida Islam",
+            "Asaduzzaman",
+            "Jannatul Ferdous",
+            "Mahmudul Hasan"
+        ]
+    },
+    {
+        "name": "DevOps",
+        "lead": "Nasir Uddin",
+        "members": [
+            "Farzana Akter",
+            "Sajid Hasan",
+            "Meherunnessa",
+            "Rifat Khan",
+            "Shafiqul Islam",
+            "Nusrat Jahan",
+            "Tareq Ahmed"
+        ]
+    },
+    {
+        "name": "Marketing & Sales",
+        "lead": "Sharmin Khan",
+        "members": [
+            "Arifur Rahman",
+            "Salma Akter",
+            "Rafiqul Islam",
+            "Tasnim Ahmed",
+            "Faisal Mahmud",
+            "Shabnam Begum",
+            "Hasan Ali",
+            "Nabila Islam"
+        ]
+    },
+    {
+        "name": "UI/UX Design",
+        "lead": "Md. Jahid Hasan",
+        "members": [
+            "Ayesha Siddiqua",
+            "Rahim Khan",
+            "Sharmin Akter",
+            "Fahim Ahmed",
+            "Nazma Begum",
+            "Sohel Rana",
+            "Farhana Yasmin",
+            "Asifur Rahman"
+        ]
+    }
+]
