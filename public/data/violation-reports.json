@@ -1,0 +1,100 @@
+{
+  "reports": [
+    {
+      "id": "bc-001",
+      "employee": "Rashedul Islam",
+      "team": "Frontend",
+      "violation": "Missing daily standup",
+      "date": "2025-02-09",
+      "amount": 150
+    },
+    {
+      "id": "bc-002",
+      "employee": "Asif Iqbal",
+      "team": "Frontend",
+      "violation": "Unprofessional communication",
+      "date": "2025-02-11",
+      "amount": 200
+    },
+    {
+      "id": "bc-003",
+      "employee": "Saifuddin Ahmed",
+      "team": "Frontend",
+      "violation": "Dress code violation",
+      "date": "2025-02-09",
+      "amount": 100
+    },
+    {
+      "id": "bc-004",
+      "employee": "Tahmina Khan",
+      "team": "Frontend",
+      "violation": "Unauthorized breaks",
+      "date": "2025-02-18",
+      "amount": 100
+    },
+    {
+      "id": "bc-016",
+      "employee": "Tahmina Khan",
+      "team": "Frontend",
+      "violation": "Missing daily standup",
+      "date": "2025-02-24",
+      "amount": 150
+    },
+    {
+      "id": "bc-016",
+      "employee": "Sabrina Yasmin",
+      "team": "Frontend",
+      "violation": "Dress code violation",
+      "date": "2025-02-10",
+      "amount": 100
+    },
+    {
+      "id": "bc-001",
+      "employee": "Tahmina Khan",
+      "team": "Frontend",
+      "violation": "Missing daily standup",
+      "date": "2025-02-05",
+      "amount": 150
+    },
+    {
+      "id": "bc-016",
+      "employee": "Sabrina Yasmin",
+      "team": "Frontend",
+      "violation": "Unauthorized breaks",
+      "date": "2025-02-09",
+      "amount": 100
+    },
+    {
+      "id": "bc-017",
+      "employee": "Sabrina Yasmin",
+      "team": "Frontend",
+      "violation": "Unauthorized breaks",
+      "date": "2025-02-13",
+      "amount": 100
+    },
+    {
+      "id": "bc-018",
+      "employee": "Rashedul Islam",
+      "team": "Frontend",
+      "violation": "Missing daily standup",
+      "date": "2025-02-11",
+      "amount": 150
+    },
+    {
+      "id": "bc-019",
+      "employee": "Sabrina Yasmin",
+      "team": "Frontend",
+      "violation": "Dress code violation",
+      "date": "2025-02-09",
+      "amount": 100
+    },
+    {
+      "id": "bc-020",
+      "employee": "Rashedul Islam",
+      "team": "Frontend",
+      "violation": "Dress code violation",
+      "date": "2025-02-09",
+      "amount": 100
+    }
+  ]
+}

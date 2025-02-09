@@ -1,9 +1,11 @@
-import type React from "react"; // Import React
-
-export const metadata = {
-    title: "BC Pay System",
-    description: "Benevolent Contribution Pay System",
-};
+import type React from "react";
+import { DashboardSidebar } from "@/components/sidebar";
+import {
+    SidebarProvider,
+    SidebarTrigger,
+    SidebarInset,
+} from "@/components/ui/sidebar";
+import { BreadcrumbNavigation } from "@/components/breadcrumb-navigation";
 
 export default function DashboardLayout({
     children,
@@ -11,27 +13,19 @@ export default function DashboardLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html lang="en">
-            <body>
-                <div className="min-h-screen bg-gray-100">
-                    <nav className="bg-white shadow-sm">
-                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                            <div className="flex justify-between h-16">
-                                <div className="flex">
-                                    <div className="flex-shrink-0 flex items-center">
-                                        <span className="text-2xl font-bold text-indigo-600">
-                                            BC Pay
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </nav>
-                    <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        <SidebarProvider defaultOpen={true}>
+            <div className="flex min-h-screen w-full">
+                <DashboardSidebar />
+                <SidebarInset>
+                    <header className="flex h-14 lg:h-[60px] items-center gap-4 border-b bg-background w-full px-6">
+                        <SidebarTrigger />
+                        <BreadcrumbNavigation />
+                    </header>
+                    <main className="flex-1 space-y-4 p-8 pt-6 w-full">
                         {children}
                     </main>
-                </div>
-            </body>
-        </html>
+                </SidebarInset>
+            </div>
+        </SidebarProvider>
     );
 }

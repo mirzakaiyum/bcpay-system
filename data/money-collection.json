@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "name": "Frontend",
+    "collected": true,
+    "sentToFinance": false,
+    "amount": 1200
+  },
+  {
+    "id": 2,
+    "name": "Backend",
+    "collected": true,
+    "sentToFinance": false,
+    "amount": 150
+  },
+  {
+    "id": 3,
+    "name": "QA",
+    "collected": false,
+    "sentToFinance": false,
+    "amount": 525
+  },
+  {
+    "id": 4,
+    "name": "DevOps",
+    "collected": true,
+    "sentToFinance": false,
+    "amount": 650
+  },
+  {
+    "id": 5,
+    "name": "Marketing",
+    "collected": false,
+    "sentToFinance": false,
+    "amount": 100
+  }
+]
