@@ -2,7 +2,7 @@
   {
     "id": 1,
     "name": "Frontend",
-    "collected": true,
+    "collected": false,
     "sentToFinance": false,
     "amount": 1200
   },

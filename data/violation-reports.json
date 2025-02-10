@@ -206,5 +206,37 @@
     "violation": "Missing daily standup",
     "date": "2025-02-10",
     "amount": 150
+  },
+  {
+    "id": 27,
+    "employee": "Shafiqul Islam",
+    "team": "DevOps",
+    "violation": "Missing daily standup",
+    "date": "2025-02-10",
+    "amount": 150
+  },
+  {
+    "id": 28,
+    "employee": "Meherunnessa",
+    "team": "DevOps",
+    "violation": "Missing daily standup",
+    "date": "2025-02-10",
+    "amount": 150
+  },
+  {
+    "id": 29,
+    "employee": "Sajid Hasan",
+    "team": "DevOps",
+    "violation": "Shoes outside rack",
+    "date": "2025-02-10",
+    "amount": 50
+  },
+  {
+    "id": 30,
+    "employee": "Meherunnessa",
+    "team": "DevOps",
+    "violation": "Missing daily standup",
+    "date": "2025-02-14",
+    "amount": 150
   }
 ]

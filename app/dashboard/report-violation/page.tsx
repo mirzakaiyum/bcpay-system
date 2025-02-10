@@ -44,6 +44,7 @@ function ReportViolationContent({
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [error, setError] = useState<string | null>(null);
+    const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
     const teamMembers = useMemo(() => {
         const currentTeam = teams.find((t) => t.name === team);
@@ -64,6 +65,7 @@ function ReportViolationContent({
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setError(null);
+        setSuccessMessage(null);
 
         if (!isFormValid()) return;
 
@@ -91,7 +93,8 @@ function ReportViolationContent({
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
 
-            router.push(`/dashboard`);
+            // Instead of redirecting:
+            setSuccessMessage("Violation reported successfully.");
         } catch (error) {
             setError("Failed to report violation. Please try again.");
             console.error("Error reporting violation:", error);
@@ -110,6 +113,11 @@ function ReportViolationContent({
                     {error && (
                         <div className="mb-4 p-4 text-red-600 bg-red-50 rounded-md">
                             {error}
+                        </div>
+                    )}
+                    {successMessage && (
+                        <div className="mb-4 p-4 text-green-600 bg-green-50 rounded-md">
+                            {successMessage}
                         </div>
                     )}
                     <form onSubmit={handleSubmit} className="space-y-4">
@@ -197,7 +205,6 @@ function ReportViolationContent({
 }
 
 function WrappedReportViolationContent() {
-    // Fetch search params inside a Suspense boundary
     const searchParams = useSearchParams();
     const role = searchParams?.get("role") || "";
     const team = searchParams?.get("team") || "";
