@@ -150,5 +150,13 @@
     "violation": "Shoes outside rack",
     "date": "2025-02-09",
     "amount": 50
+  },
+  {
+    "id": 20,
+    "employee": "Tahmina Khan",
+    "team": "Frontend",
+    "violation": "Dress code violation",
+    "date": "2025-02-10",
+    "amount": 100
   }
 ]

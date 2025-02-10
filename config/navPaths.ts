@@ -26,7 +26,7 @@ export const navPaths: NavPath[] = [
         path: '/dashboard/money-tracker',
         label: 'Money Tracker',
         icon: AlertTriangle,
-        roles: ['hr']
+        roles: ['hr', 'ceo']
     }
 ];
 

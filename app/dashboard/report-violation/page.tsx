@@ -2,8 +2,6 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-
-// UI Components
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
@@ -15,13 +13,11 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
-import { toast } from "@/hooks/use-toast";
 
 // Data
 import violations from "@/data/violations.json";
 import teams from "@/data/teams.json";
 
-// Types
 interface FormData {
     employee: string;
     violation: string;
@@ -42,18 +38,18 @@ export default function ReportViolationPage() {
     const role = searchParams?.get("role") || "";
     const team = searchParams?.get("team") || "";
 
-    const teamMembers = useMemo(() => {
-        const currentTeam = teams.find((t) => t.name === team);
-        return currentTeam?.members || [];
-    }, [team]);
-
     const [formData, setFormData] = useState<FormData>({
         employee: "",
         violation: "",
         date: new Date().toISOString().split("T")[0],
     });
-
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [error, setError] = useState<string | null>(null);
+
+    const teamMembers = useMemo(() => {
+        const currentTeam = teams.find((t) => t.name === team);
+        return currentTeam?.members || [];
+    }, [team]);
 
     useEffect(() => {
         if (role !== "teamLead") {
@@ -62,25 +58,16 @@ export default function ReportViolationPage() {
         }
     }, [role, router, searchParams]);
 
-    if (role !== "teamLead") {
-        return null;
-    }
+    if (role !== "teamLead") return null;
 
-    const isFormValid = (): boolean => {
-        return !!(formData.employee && formData.violation && formData.date);
-    };
+    const isFormValid = () =>
+        !!(formData.employee && formData.violation && formData.date);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        setError(null);
 
-        if (!isFormValid()) {
-            toast({
-                title: "Validation Error",
-                description: "Please fill in all required fields",
-                variant: "destructive",
-            });
-            return;
-        }
+        if (!isFormValid()) return;
 
         setIsSubmitting(true);
 
@@ -88,7 +75,6 @@ export default function ReportViolationPage() {
             const selectedViolation = violations.find(
                 (v) => v.id === formData.violation
             );
-
             const violationData: ViolationReport = {
                 employee: formData.employee,
                 team,
@@ -99,9 +85,7 @@ export default function ReportViolationPage() {
 
             const response = await fetch("/api/reports", {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(violationData),
             });
 
@@ -109,23 +93,11 @@ export default function ReportViolationPage() {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
 
-            const result = await response.json();
-
-            toast({
-                title: "Violation Reported",
-                description: `Report ID: ${result.report.id}`,
-            });
-
             const query = searchParams?.toString() || "";
             router.push(`/dashboard${query ? `?${query}` : ""}`);
         } catch (error) {
+            setError("Failed to report violation. Please try again.");
             console.error("Error reporting violation:", error);
-            toast({
-                title: "Error",
-                description:
-                    "There was an error reporting the violation. Please try again.",
-                variant: "destructive",
-            });
         } finally {
             setIsSubmitting(false);
         }
@@ -138,6 +110,11 @@ export default function ReportViolationPage() {
                     <CardTitle>Report Violation for {team} Team</CardTitle>
                 </CardHeader>
                 <CardContent>
+                    {error && (
+                        <div className="mb-4 p-4 text-red-600 bg-red-50 rounded-md">
+                            {error}
+                        </div>
+                    )}
                     <form onSubmit={handleSubmit} className="space-y-4">
                         <div className="space-y-2">
                             <Label htmlFor="employee">Team Member</Label>
