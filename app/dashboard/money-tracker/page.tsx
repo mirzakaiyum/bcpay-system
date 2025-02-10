@@ -1,14 +1,30 @@
-'use client';
-import MoneyStatus from "@/components/MoneyStatus";
+"use client";
+
+import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
+import MoneyStatus from "@/components/MoneyStatus";
 
-export default function MoneyTrackerPage() {
+function MoneyTrackerContent() {
     const searchParams = useSearchParams();
-    const role = searchParams?.get("role") ?? "";
+    const role = searchParams?.get("role");
 
+    if (role !== "hr") {
+        return <div>Unauthorized access</div>;
+    }
+
+    return <MoneyStatus />;
+}
+
+export default function MoneyTracker() {
     return (
-        <div className="mx-auto">
-            {role === "hr" && <MoneyStatus />}
-        </div>
+        <Suspense
+            fallback={
+                <div className="animate-pulse">
+                    <div className="h-[400px] bg-gray-200 rounded-lg"></div>
+                </div>
+            }
+        >
+            <MoneyTrackerContent />
+        </Suspense>
     );
 }

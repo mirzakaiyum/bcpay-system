@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
     Table,
@@ -22,7 +22,7 @@ interface TeamStatus {
     sentToFinance: boolean;
 }
 
-export default function MoneyStatus() {
+function MoneyStatusContent() {
     const [teams, setTeams] = useState<TeamStatus[]>(MoneyCollection);
     const [loading, setLoading] = useState<{ [key: string]: boolean }>({});
     const [error, setError] = useState<string | null>(null);
@@ -137,5 +137,13 @@ export default function MoneyStatus() {
                 </Table>
             </CardContent>
         </Card>
+    );
+}
+
+export default function MoneyStatus() {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <MoneyStatusContent />
+        </Suspense>
     );
 }

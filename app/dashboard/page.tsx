@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Clock, CheckCircle, AlertCircle } from "lucide-react";
@@ -9,7 +10,7 @@ import TeamViolation from "@/components/TeamViolation";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
-export default function Dashboard() {
+function DashboardContent() {
     const searchParams = useSearchParams();
     const role = searchParams?.get("role") || "";
     const team = searchParams?.get("team") || "";
@@ -66,5 +67,26 @@ export default function Dashboard() {
 
             {role === "teamLead" && <TeamViolation />}
         </div>
+    );
+}
+
+export default function Dashboard() {
+    return (
+        <Suspense
+            fallback={
+                <div className="space-y-8">
+                    <div className="animate-pulse space-y-4">
+                        <div className="h-8 bg-gray-200 rounded w-1/4"></div>
+                        <div className="h-4 bg-gray-200 rounded w-2/4"></div>
+                        <div className="grid gap-4 md:grid-cols-2">
+                            <div className="h-[300px] bg-gray-200 rounded"></div>
+                            <div className="h-[300px] bg-gray-200 rounded"></div>
+                        </div>
+                    </div>
+                </div>
+            }
+        >
+            <DashboardContent />
+        </Suspense>
     );
 }

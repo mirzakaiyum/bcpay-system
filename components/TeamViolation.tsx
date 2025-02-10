@@ -1,6 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 import {
     Table,
     TableBody,
@@ -12,7 +13,7 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import violationReports from "@/data/violation-reports.json";
 
-export default function TeamViolation() {
+function TeamViolationContent() {
     const searchParams = useSearchParams();
     const team = searchParams ? searchParams.get("team") : null;
 
@@ -95,5 +96,13 @@ export default function TeamViolation() {
                 </Table>
             </CardContent>
         </Card>
+    );
+}
+
+export default function TeamViolation() {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <TeamViolationContent />
+        </Suspense>
     );
 }

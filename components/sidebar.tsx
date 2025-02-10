@@ -5,15 +5,16 @@ import { usePathname, useSearchParams } from "next/navigation";
 import { getAuthorizedPaths, type Role } from "@/config/navPaths";
 import {
     Sidebar,
-    SidebarContent,
+    SidebarContent as UISidebarContent,
     SidebarHeader,
     SidebarMenu,
     SidebarMenuItem,
     SidebarMenuButton,
     SidebarRail,
 } from "@/components/ui/sidebar";
+import { Suspense } from "react";
 
-export function DashboardSidebar() {
+function SidebarContent() {
     const pathname = usePathname();
     const searchParams = useSearchParams();
     const role = searchParams?.get("role") as Role;
@@ -22,7 +23,7 @@ export function DashboardSidebar() {
     const navItems = getAuthorizedPaths(role);
 
     return (
-        <Sidebar>
+        <UISidebarContent>
             <SidebarHeader>
                 <SidebarMenu>
                     <SidebarMenuItem>
@@ -47,7 +48,7 @@ export function DashboardSidebar() {
                 </SidebarMenu>
             </SidebarHeader>
 
-            <SidebarContent>
+            <UISidebarContent>
                 <SidebarMenu>
                     {navItems.map(({ path, icon: Icon, label }) => (
                         <SidebarMenuItem key={path} className="px-2">
@@ -65,8 +66,16 @@ export function DashboardSidebar() {
                         </SidebarMenuItem>
                     ))}
                 </SidebarMenu>
-            </SidebarContent>
+            </UISidebarContent>
             <SidebarRail />
-        </Sidebar>
+        </UISidebarContent>
+    );
+}
+
+export function DashboardSidebar() {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <SidebarContent />
+        </Suspense>
     );
 }

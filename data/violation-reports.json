@@ -166,5 +166,45 @@
     "violation": "Dress code violation",
     "date": "2025-02-10",
     "amount": 100
+  },
+  {
+    "id": 22,
+    "employee": "Nasrin Sultana",
+    "team": "Backend",
+    "violation": "Shoes outside rack",
+    "date": "2025-02-10",
+    "amount": 50
+  },
+  {
+    "id": 23,
+    "employee": "Asaduzzaman",
+    "team": "QA",
+    "violation": "Dress code violation",
+    "date": "2025-02-10",
+    "amount": 100
+  },
+  {
+    "id": 24,
+    "employee": "Omar Faruk",
+    "team": "Backend",
+    "violation": "Unauthorized breaks",
+    "date": "2025-02-10",
+    "amount": 100
+  },
+  {
+    "id": 25,
+    "employee": "Hasan Ali",
+    "team": "Marketing",
+    "violation": "Unauthorized breaks",
+    "date": "2025-02-10",
+    "amount": 100
+  },
+  {
+    "id": 26,
+    "employee": "Salma Akter",
+    "team": "Marketing",
+    "violation": "Missing daily standup",
+    "date": "2025-02-10",
+    "amount": 150
   }
 ]
