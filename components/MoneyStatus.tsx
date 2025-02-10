@@ -12,12 +12,20 @@ import {
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, XCircle, Loader2 } from "lucide-react";
-import { toast } from "@/hooks/use-toast";
 import MoneyCollection from "@/data/money-collection.json";
 
+interface TeamStatus {
+    id: number;
+    name: string;
+    amount: number;
+    collected: boolean;
+    sentToFinance: boolean;
+}
+
 export default function MoneyStatus() {
-    const [teams, setTeams] = useState(MoneyCollection);
+    const [teams, setTeams] = useState<TeamStatus[]>(MoneyCollection);
     const [loading, setLoading] = useState<{ [key: string]: boolean }>({});
+    const [error, setError] = useState<string | null>(null);
 
     const toggleStatus = async (
         id: number,
@@ -25,9 +33,13 @@ export default function MoneyStatus() {
     ) => {
         const loadingKey = `${id}-${field}`;
         setLoading((prev) => ({ ...prev, [loadingKey]: true }));
+        setError(null);
 
         try {
-            const newValue = !teams.find((team) => team.id === id)?.[field];
+            const team = teams.find((team) => team.id === id);
+            if (!team) throw new Error("Team not found");
+
+            const newValue = !team[field];
 
             const response = await fetch("/api/money-collection", {
                 method: "PATCH",
@@ -38,23 +50,13 @@ export default function MoneyStatus() {
             if (!response.ok) throw new Error("Failed to update status");
 
             setTeams(
-                teams.map((team) =>
-                    team.id === id ? { ...team, [field]: newValue } : team
+                teams.map((t) =>
+                    t.id === id ? { ...t, [field]: newValue } : t
                 )
             );
-
-            toast({
-                title: "Status Updated",
-                description: `Successfully updated ${field} status for ${
-                    teams.find((t) => t.id === id)?.name
-                }`,
-            });
         } catch (error) {
-            toast({
-                title: "Error",
-                description: "Failed to update status. Please try again.",
-                variant: "destructive",
-            });
+            setError("Failed to update status. Please try again.");
+            console.error("Error updating status:", error);
         } finally {
             setLoading((prev) => ({ ...prev, [loadingKey]: false }));
         }
@@ -64,6 +66,11 @@ export default function MoneyStatus() {
         <Card>
             <CardHeader>
                 <CardTitle>Money Collection Status</CardTitle>
+                {error && (
+                    <div className="mt-2 p-2 text-sm text-red-600 bg-red-50 rounded">
+                        {error}
+                    </div>
+                )}
             </CardHeader>
             <CardContent>
                 <Table>
