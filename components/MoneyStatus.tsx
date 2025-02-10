@@ -11,7 +11,7 @@ import {
     TableRow,
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
-import { CheckCircle, XCircle, Loader2 } from "lucide-react";
+import { CheckCircle, XCircle } from "lucide-react";
 import MoneyCollection from "@/public/data/money-collection.json";
 
 interface TeamStatus {
@@ -24,53 +24,19 @@ interface TeamStatus {
 
 function MoneyStatusContent() {
     const [teams, setTeams] = useState<TeamStatus[]>(MoneyCollection);
-    const [loading, setLoading] = useState<{ [key: string]: boolean }>({});
-    const [error, setError] = useState<string | null>(null);
 
-    const toggleStatus = async (
-        id: number,
-        field: "collected" | "sentToFinance"
-    ) => {
-        const loadingKey = `${id}-${field}`;
-        setLoading((prev) => ({ ...prev, [loadingKey]: true }));
-        setError(null);
-
-        try {
-            const team = teams.find((team) => team.id === id);
-            if (!team) throw new Error("Team not found");
-
-            const newValue = !team[field];
-
-            const response = await fetch("/api/money-collection", {
-                method: "PATCH",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ id, field, value: newValue }),
-            });
-
-            if (!response.ok) throw new Error("Failed to update status");
-
-            setTeams(
-                teams.map((t) =>
-                    t.id === id ? { ...t, [field]: newValue } : t
-                )
-            );
-        } catch (error) {
-            setError("Failed to update status. Please try again.");
-            console.error("Error updating status:", error);
-        } finally {
-            setLoading((prev) => ({ ...prev, [loadingKey]: false }));
-        }
+    const toggleStatus = (id: number, field: "collected" | "sentToFinance") => {
+        setTeams((prevTeams) =>
+            prevTeams.map((team) =>
+                team.id === id ? { ...team, [field]: !team[field] } : team
+            )
+        );
     };
 
     return (
         <Card>
             <CardHeader>
                 <CardTitle>Money Collection Status</CardTitle>
-                {error && (
-                    <div className="mt-2 p-2 text-sm text-red-600 bg-red-50 rounded">
-                        {error}
-                    </div>
-                )}
             </CardHeader>
             <CardContent>
                 <Table>
@@ -94,13 +60,8 @@ function MoneyStatusContent() {
                                         onClick={() =>
                                             toggleStatus(team.id, "collected")
                                         }
-                                        disabled={
-                                            loading[`${team.id}-collected`]
-                                        }
                                     >
-                                        {loading[`${team.id}-collected`] ? (
-                                            <Loader2 className="h-5 w-5 animate-spin" />
-                                        ) : team.collected ? (
+                                        {team.collected ? (
                                             <CheckCircle className="h-5 w-5 text-green-500" />
                                         ) : (
                                             <XCircle className="h-5 w-5 text-red-500" />
@@ -117,14 +78,9 @@ function MoneyStatusContent() {
                                                 "sentToFinance"
                                             )
                                         }
-                                        disabled={
-                                            !team.collected ||
-                                            loading[`${team.id}-sentToFinance`]
-                                        }
+                                        disabled={!team.collected}
                                     >
-                                        {loading[`${team.id}-sentToFinance`] ? (
-                                            <Loader2 className="h-5 w-5 animate-spin" />
-                                        ) : team.sentToFinance ? (
+                                        {team.sentToFinance ? (
                                             <CheckCircle className="h-5 w-5 text-green-500" />
                                         ) : (
                                             <XCircle className="h-5 w-5 text-red-500" />

@@ -15,6 +15,7 @@ import {
 import { Button } from "@/components/ui/button";
 import violations from "@/public/data/violations.json";
 import teams from "@/public/data/teams.json";
+import { useViolationStore } from "@/store/violationStore";
 
 interface FormData {
     employee: string;
@@ -45,6 +46,7 @@ function ReportViolationContent({
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [successMessage, setSuccessMessage] = useState<string | null>(null);
+    const addViolation = useViolationStore((state) => state.addViolation);
 
     const teamMembers = useMemo(() => {
         const currentTeam = teams.find((t) => t.name === team);
@@ -83,18 +85,16 @@ function ReportViolationContent({
                 amount: selectedViolation?.amount,
             };
 
-            const response = await fetch("/api/reports", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(violationData),
-            });
-
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-
-            // Instead of redirecting:
+            // Update the store instead of making an API call
+            addViolation(violationData);
             setSuccessMessage("Violation reported successfully.");
+
+            // Reset form
+            setFormData({
+                employee: "",
+                violation: "",
+                date: new Date().toISOString().split("T")[0],
+            });
         } catch (error) {
             setError("Failed to report violation. Please try again.");
             console.error("Error reporting violation:", error);

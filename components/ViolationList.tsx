@@ -9,14 +9,14 @@ import {
     TableRow,
 } from "@/components/ui/table";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import violationData from "@/public/data/violation-reports.json";
+import { useViolationStore } from "@/store/violationStore";
 
 interface Violation {
     employee: string;
     team: string;
-    violation: string;
+    violation: string | undefined;
     date: string;
-    amount: number;
+    amount: number | undefined;
 }
 
 interface ViolationListProps {
@@ -26,7 +26,8 @@ interface ViolationListProps {
 export default function ViolationList({
     groupByTeam = false,
 }: ViolationListProps) {
-    const sortedViolations = [...violationData]
+    const violations = useViolationStore((state) => state.violations);
+    const sortedViolations = [...violations]
         .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
         .slice(0, 5);
 

@@ -11,18 +11,19 @@ import {
     TableRow,
 } from "@/components/ui/table";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import violationReports from "@/public/data/violation-reports.json";
+import { useViolationStore } from "@/store/violationStore";
 
 function TeamViolationContent() {
     const searchParams = useSearchParams();
     const team = searchParams ? searchParams.get("team") : null;
+    const violations = useViolationStore((state) => state.violations);
 
     // Get current month and year
     const now = new Date();
     const currentMonth = now.getMonth();
     const currentYear = now.getFullYear();
 
-    const teamViolations = violationReports.filter((violation) => {
+    const teamViolations = violations.filter((violation) => {
         const violationDate = new Date(violation.date);
         return (
             violation.team === team &&
@@ -32,7 +33,7 @@ function TeamViolationContent() {
     });
 
     const totalAmount = teamViolations.reduce(
-        (sum, violation) => sum + violation.amount,
+        (sum, violation) => sum + (violation.amount || 0),
         0
     );
 

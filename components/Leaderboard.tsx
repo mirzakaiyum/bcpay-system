@@ -13,16 +13,18 @@ import {
     CardContent,
     CardDescription,
 } from "./ui/card";
-import violationData from "@/public/data/violation-reports.json";
+import { useViolationStore } from "@/store/violationStore";
 
 export default function Leaderboard() {
+    const violations = useViolationStore((state) => state.violations);
+
     // Get current month and year
     const now = new Date();
     const currentMonth = now.getMonth();
     const currentYear = now.getFullYear();
 
     // Filter violations for current month
-    const currentMonthViolations = violationData.filter((violation) => {
+    const currentMonthViolations = violations.filter((violation) => {
         const violationDate = new Date(violation.date);
         return (
             violationDate.getMonth() === currentMonth &&
@@ -33,7 +35,7 @@ export default function Leaderboard() {
     const contributorTotals = currentMonthViolations.reduce(
         (acc, violation) => {
             acc[violation.employee] =
-                (acc[violation.employee] || 0) + violation.amount;
+                (acc[violation.employee] || 0) + (violation.amount ?? 0);
             return acc;
         },
         {} as Record<string, number>
