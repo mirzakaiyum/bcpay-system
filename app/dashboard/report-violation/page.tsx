@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useMemo, useState, Suspense } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { Suspense, useEffect, useMemo, useState } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
@@ -13,8 +13,6 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
-
-// Data
 import violations from "@/data/violations.json";
 import teams from "@/data/teams.json";
 
@@ -23,7 +21,6 @@ interface FormData {
     violation: string;
     date: string;
 }
-
 interface ViolationReport {
     employee: string;
     team: string;
@@ -32,12 +29,14 @@ interface ViolationReport {
     amount: number | undefined;
 }
 
-function ReportViolationContent() {
+function ReportViolationContent({
+    role,
+    team,
+}: {
+    role: string;
+    team: string;
+}) {
     const router = useRouter();
-    const searchParams = useSearchParams();
-    const role = searchParams?.get("role") || "";
-    const team = searchParams?.get("team") || "";
-
     const [formData, setFormData] = useState<FormData>({
         employee: "",
         violation: "",
@@ -53,10 +52,9 @@ function ReportViolationContent() {
 
     useEffect(() => {
         if (role !== "teamLead") {
-            const query = searchParams?.toString() || "";
-            router.push(`/dashboard${query ? `?${query}` : ""}`);
+            router.push(`/dashboard`);
         }
-    }, [role, router, searchParams]);
+    }, [role, router]);
 
     if (role !== "teamLead") return null;
 
@@ -93,8 +91,7 @@ function ReportViolationContent() {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
 
-            const query = searchParams?.toString() || "";
-            router.push(`/dashboard${query ? `?${query}` : ""}`);
+            router.push(`/dashboard`);
         } catch (error) {
             setError("Failed to report violation. Please try again.");
             console.error("Error reporting violation:", error);
@@ -199,10 +196,19 @@ function ReportViolationContent() {
     );
 }
 
+function WrappedReportViolationContent() {
+    // Fetch search params inside a Suspense boundary
+    const searchParams = useSearchParams();
+    const role = searchParams?.get("role") || "";
+    const team = searchParams?.get("team") || "";
+
+    return <ReportViolationContent role={role} team={team} />;
+}
+
 export default function ReportViolationPage() {
     return (
-        <Suspense fallback={<div>Loading...</div>}>
-            <ReportViolationContent />
+        <Suspense fallback={<div>Loading search params...</div>}>
+            <WrappedReportViolationContent />
         </Suspense>
     );
 }
