@@ -11,7 +11,7 @@ import {
     TableRow,
 } from "@/components/ui/table";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import violationReports from "@/data/violation-reports.json";
+import violationReports from "@/public/data/violation-reports.json";
 
 function TeamViolationContent() {
     const searchParams = useSearchParams();

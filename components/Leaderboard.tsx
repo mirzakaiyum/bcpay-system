@@ -13,7 +13,7 @@ import {
     CardContent,
     CardDescription,
 } from "./ui/card";
-import violationData from "@/data/violation-reports.json";
+import violationData from "@/public/data/violation-reports.json";
 
 export default function Leaderboard() {
     // Get current month and year

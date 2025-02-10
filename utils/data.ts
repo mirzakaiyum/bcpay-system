@@ -1,7 +1,7 @@
 import fs from 'fs/promises';
 import path from 'path';
 
-const violationReportsPath = path.join(process.cwd(), 'data', 'violation-reports.json');
+const violationReportsPath = path.join(process.cwd(), 'public', 'data', 'violation-reports.json');
 
 export async function getViolationReports() {
     const fileContent = await fs.readFile(violationReportsPath, 'utf-8');

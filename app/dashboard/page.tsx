@@ -3,7 +3,6 @@
 import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Clock, CheckCircle, AlertCircle } from "lucide-react";
 import ViolationList from "@/components/ViolationList";
 import Leaderboard from "@/components/Leaderboard";
 import TeamViolation from "@/components/TeamViolation";

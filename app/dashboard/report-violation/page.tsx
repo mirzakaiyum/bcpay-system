@@ -13,8 +13,8 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
-import violations from "@/data/violations.json";
-import teams from "@/data/teams.json";
+import violations from "@/public/data/violations.json";
+import teams from "@/public/data/teams.json";
 
 interface FormData {
     employee: string;

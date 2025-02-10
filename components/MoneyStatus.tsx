@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, XCircle, Loader2 } from "lucide-react";
-import MoneyCollection from "@/data/money-collection.json";
+import MoneyCollection from "@/public/data/money-collection.json";
 
 interface TeamStatus {
     id: number;

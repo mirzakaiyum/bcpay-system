@@ -9,7 +9,7 @@ import {
     TableRow,
 } from "@/components/ui/table";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import violationData from "@/data/violation-reports.json";
+import violationData from "@/public/data/violation-reports.json";
 
 interface Violation {
     employee: string;

@@ -1,100 +1,242 @@
-{
-  "reports": [
-    {
-      "id": "bc-001",
-      "employee": "Rashedul Islam",
-      "team": "Frontend",
-      "violation": "Missing daily standup",
-      "date": "2025-02-09",
-      "amount": 150
-    },
-    {
-      "id": "bc-002",
-      "employee": "Asif Iqbal",
-      "team": "Frontend",
-      "violation": "Unprofessional communication",
-      "date": "2025-02-11",
-      "amount": 200
-    },
-    {
-      "id": "bc-003",
-      "employee": "Saifuddin Ahmed",
-      "team": "Frontend",
-      "violation": "Dress code violation",
-      "date": "2025-02-09",
-      "amount": 100
-    },
-    {
-      "id": "bc-004",
-      "employee": "Tahmina Khan",
-      "team": "Frontend",
-      "violation": "Unauthorized breaks",
-      "date": "2025-02-18",
-      "amount": 100
-    },
-    {
-      "id": "bc-016",
-      "employee": "Tahmina Khan",
-      "team": "Frontend",
-      "violation": "Missing daily standup",
-      "date": "2025-02-24",
-      "amount": 150
-    },
-    {
-      "id": "bc-016",
-      "employee": "Sabrina Yasmin",
-      "team": "Frontend",
-      "violation": "Dress code violation",
-      "date": "2025-02-10",
-      "amount": 100
-    },
-    {
-      "id": "bc-001",
-      "employee": "Tahmina Khan",
-      "team": "Frontend",
-      "violation": "Missing daily standup",
-      "date": "2025-02-05",
-      "amount": 150
-    },
-    {
-      "id": "bc-016",
-      "employee": "Sabrina Yasmin",
-      "team": "Frontend",
-      "violation": "Unauthorized breaks",
-      "date": "2025-02-09",
-      "amount": 100
-    },
-    {
-      "id": "bc-017",
-      "employee": "Sabrina Yasmin",
-      "team": "Frontend",
-      "violation": "Unauthorized breaks",
-      "date": "2025-02-13",
-      "amount": 100
-    },
-    {
-      "id": "bc-018",
-      "employee": "Rashedul Islam",
-      "team": "Frontend",
-      "violation": "Missing daily standup",
-      "date": "2025-02-11",
-      "amount": 150
-    },
-    {
-      "id": "bc-019",
-      "employee": "Sabrina Yasmin",
-      "team": "Frontend",
-      "violation": "Dress code violation",
-      "date": "2025-02-09",
-      "amount": 100
-    },
-    {
-      "id": "bc-020",
-      "employee": "Rashedul Islam",
-      "team": "Frontend",
-      "violation": "Dress code violation",
-      "date": "2025-02-09",
-      "amount": 100
-    }
-  ]
-}
+[
+  {
+    "id": 1,
+    "employee": "Fatema Akter",
+    "team": "Frontend",
+    "violation": "Late to meetings",
+    "date": "2024-01-15",
+    "amount": 200
+  },
+  {
+    "id": 2,
+    "employee": "Kamal Hossain",
+    "team": "Backend",
+    "violation": "Missing daily standup",
+    "date": "2024-01-16",
+    "amount": 150
+  },
+  {
+    "id": 3,
+    "employee": "Anika Chowdhury",
+    "team": "QA",
+    "violation": "Failure to update task board",
+    "date": "2024-01-17",
+    "amount": 75
+  },
+  {
+    "id": 4,
+    "employee": "Farzana Akter",
+    "team": "DevOps",
+    "violation": "Dress code violation",
+    "date": "2024-01-18",
+    "amount": 100
+  },
+  {
+    "id": 5,
+    "employee": "Saifuddin Ahmed",
+    "team": "Frontend",
+    "violation": "Missing daily standup",
+    "date": "2025-02-09",
+    "amount": 150
+  },
+  {
+    "id": 6,
+    "employee": "Sabrina Yasmin",
+    "team": "Frontend",
+    "violation": "Unauthorized breaks",
+    "date": "2025-03-09",
+    "amount": 100
+  },
+  {
+    "id": 7,
+    "employee": "Rashedul Islam",
+    "team": "Frontend",
+    "violation": "Missing daily standup",
+    "date": "2025-02-20",
+    "amount": 150
+  },
+  {
+    "id": 8,
+    "employee": "Sabrina Yasmin",
+    "team": "Frontend",
+    "violation": "Missing daily standup",
+    "date": "2025-02-20",
+    "amount": 150
+  },
+  {
+    "id": 9,
+    "employee": "Rashedul Islam",
+    "team": "Frontend",
+    "violation": "Dress code violation",
+    "date": "2025-02-20",
+    "amount": 100
+  },
+  {
+    "id": 10,
+    "employee": "Tahmina Khan",
+    "team": "Frontend",
+    "violation": "Dress code violation",
+    "date": "2025-02-19",
+    "amount": 100
+  },
+  {
+    "id": 11,
+    "employee": "Fahmida Islam",
+    "team": "QA",
+    "violation": "Shoes outside rack",
+    "date": "2025-02-09",
+    "amount": 50
+  },
+  {
+    "id": 12,
+    "employee": "Fahmida Islam",
+    "team": "QA",
+    "violation": "Dress code violation",
+    "date": "2025-02-09",
+    "amount": 100
+  },
+  {
+    "id": 13,
+    "employee": "Rifat Khan",
+    "team": "DevOps",
+    "violation": "Missing daily standup",
+    "date": "2025-02-18",
+    "amount": 150
+  },
+  {
+    "id": 14,
+    "employee": "Fahmida Islam",
+    "team": "QA",
+    "violation": "Missing daily standup",
+    "date": "2025-02-09",
+    "amount": 150
+  },
+  {
+    "id": 15,
+    "employee": "Hasan Ali",
+    "team": "Marketing",
+    "violation": "Unauthorized breaks",
+    "date": "2025-02-27",
+    "amount": 100
+  },
+  {
+    "id": 16,
+    "employee": "Sabrina Yasmin",
+    "team": "Frontend",
+    "violation": "Missing daily standup",
+    "date": "2025-02-19",
+    "amount": 150
+  },
+  {
+    "id": 17,
+    "employee": "Sajid Hasan",
+    "team": "DevOps",
+    "violation": "Missing daily standup",
+    "date": "2025-02-09",
+    "amount": 150
+  },
+  {
+    "id": 18,
+    "employee": "Rifat Khan",
+    "team": "DevOps",
+    "violation": "Missing daily standup",
+    "date": "2025-02-09",
+    "amount": 150
+  },
+  {
+    "id": 19,
+    "employee": "Tahmina Khan",
+    "team": "Frontend",
+    "violation": "Shoes outside rack",
+    "date": "2025-02-09",
+    "amount": 50
+  },
+  {
+    "id": 20,
+    "employee": "Tahmina Khan",
+    "team": "Frontend",
+    "violation": "Dress code violation",
+    "date": "2025-02-10",
+    "amount": 100
+  },
+  {
+    "id": 21,
+    "employee": "Sabrina Yasmin",
+    "team": "Frontend",
+    "violation": "Dress code violation",
+    "date": "2025-02-10",
+    "amount": 100
+  },
+  {
+    "id": 22,
+    "employee": "Nasrin Sultana",
+    "team": "Backend",
+    "violation": "Shoes outside rack",
+    "date": "2025-02-10",
+    "amount": 50
+  },
+  {
+    "id": 23,
+    "employee": "Asaduzzaman",
+    "team": "QA",
+    "violation": "Dress code violation",
+    "date": "2025-02-10",
+    "amount": 100
+  },
+  {
+    "id": 24,
+    "employee": "Omar Faruk",
+    "team": "Backend",
+    "violation": "Unauthorized breaks",
+    "date": "2025-02-10",
+    "amount": 100
+  },
+  {
+    "id": 25,
+    "employee": "Hasan Ali",
+    "team": "Marketing",
+    "violation": "Unauthorized breaks",
+    "date": "2025-02-10",
+    "amount": 100
+  },
+  {
+    "id": 26,
+    "employee": "Salma Akter",
+    "team": "Marketing",
+    "violation": "Missing daily standup",
+    "date": "2025-02-10",
+    "amount": 150
+  },
+  {
+    "id": 27,
+    "employee": "Shafiqul Islam",
+    "team": "DevOps",
+    "violation": "Missing daily standup",
+    "date": "2025-02-10",
+    "amount": 150
+  },
+  {
+    "id": 28,
+    "employee": "Meherunnessa",
+    "team": "DevOps",
+    "violation": "Missing daily standup",
+    "date": "2025-02-10",
+    "amount": 150
+  },
+  {
+    "id": 29,
+    "employee": "Sajid Hasan",
+    "team": "DevOps",
+    "violation": "Shoes outside rack",
+    "date": "2025-02-10",
+    "amount": 50
+  },
+  {
+    "id": 30,
+    "employee": "Meherunnessa",
+    "team": "DevOps",
+    "violation": "Missing daily standup",
+    "date": "2025-02-14",
+    "amount": 150
+  }
+]

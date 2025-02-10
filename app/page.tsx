@@ -7,7 +7,7 @@ import {
     CardTitle,
 } from "@/components/ui/card";
 import Link from "next/link";
-import teams from "@/data/teams.json";
+import teams from "@/public/data/teams.json";
 
 export default function Home() {
     return (
