@@ -31,7 +31,7 @@ export default function Dashboard() {
                 {role === "teamLead" && (
                     <Button>
                         <Link
-                            href={`/dashboard/report-violation?${searchParams.toString()}`}
+                            href={`/dashboard/report-violation?${searchParams?.toString()}`}
                         >
                             Report Violation
                         </Link>
@@ -40,7 +40,7 @@ export default function Dashboard() {
                 {role === "hr" && (
                     <Button>
                         <Link
-                            href={`/dashboard/money-tracker?${searchParams.toString()}`}
+                            href={`/dashboard/money-tracker?${searchParams?.toString()}`}
                         >
                             Track Money Collection
                         </Link>

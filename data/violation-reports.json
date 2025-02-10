@@ -158,5 +158,13 @@
     "violation": "Dress code violation",
     "date": "2025-02-10",
     "amount": 100
+  },
+  {
+    "id": 21,
+    "employee": "Sabrina Yasmin",
+    "team": "Frontend",
+    "violation": "Dress code violation",
+    "date": "2025-02-10",
+    "amount": 100
   }
 ]

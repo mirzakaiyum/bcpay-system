@@ -60,8 +60,7 @@ export default function ReportViolationPage() {
 
     if (role !== "teamLead") return null;
 
-    const isFormValid = () =>
-        !!(formData.employee && formData.violation && formData.date);
+    const isFormValid = () => !!(formData.employee && formData.violation && formData.date);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -72,9 +71,7 @@ export default function ReportViolationPage() {
         setIsSubmitting(true);
 
         try {
-            const selectedViolation = violations.find(
-                (v) => v.id === formData.violation
-            );
+            const selectedViolation = violations.find((v) => v.id === formData.violation);
             const violationData: ViolationReport = {
                 employee: formData.employee,
                 team,
@@ -121,10 +118,7 @@ export default function ReportViolationPage() {
                             <Select
                                 value={formData.employee}
                                 onValueChange={(value) =>
-                                    setFormData((prev) => ({
-                                        ...prev,
-                                        employee: value,
-                                    }))
+                                    setFormData((prev) => ({ ...prev, employee: value }))
                                 }
                             >
                                 <SelectTrigger>
@@ -145,10 +139,7 @@ export default function ReportViolationPage() {
                             <Select
                                 value={formData.violation}
                                 onValueChange={(value) =>
-                                    setFormData((prev) => ({
-                                        ...prev,
-                                        violation: value,
-                                    }))
+                                    setFormData((prev) => ({ ...prev, violation: value }))
                                 }
                             >
                                 <SelectTrigger>
@@ -156,12 +147,8 @@ export default function ReportViolationPage() {
                                 </SelectTrigger>
                                 <SelectContent>
                                     {violations.map((violation) => (
-                                        <SelectItem
-                                            key={violation.id}
-                                            value={violation.id}
-                                        >
-                                            {violation.name} (৳
-                                            {violation.amount})
+                                        <SelectItem key={violation.id} value={violation.id}>
+                                            {violation.name} (৳{violation.amount})
                                         </SelectItem>
                                     ))}
                                 </SelectContent>
@@ -175,22 +162,14 @@ export default function ReportViolationPage() {
                                 type="date"
                                 value={formData.date}
                                 onChange={(e) =>
-                                    setFormData((prev) => ({
-                                        ...prev,
-                                        date: e.target.value,
-                                    }))
+                                    setFormData((prev) => ({ ...prev, date: e.target.value }))
                                 }
                                 required
                             />
                         </div>
 
-                        <Button
-                            type="submit"
-                            disabled={isSubmitting || !isFormValid()}
-                        >
-                            {isSubmitting
-                                ? "Submitting..."
-                                : "Report Violation"}
+                        <Button type="submit" disabled={isSubmitting || !isFormValid()}>
+                            {isSubmitting ? "Submitting..." : "Report Violation"}
                         </Button>
                     </form>
                 </CardContent>

@@ -16,8 +16,8 @@ import {
 export function DashboardSidebar() {
     const pathname = usePathname();
     const searchParams = useSearchParams();
-    const role = searchParams.get("role") as Role;
-    const team = searchParams.get("team");
+    const role = searchParams?.get("role") as Role;
+    const team = searchParams?.get("team");
 
     const navItems = getAuthorizedPaths(role);
 
@@ -56,7 +56,7 @@ export function DashboardSidebar() {
                                 isActive={pathname === path}
                             >
                                 <Link
-                                    href={`${path}?${searchParams.toString()}`}
+                                    href={`${path}?${searchParams?.toString()}`}
                                 >
                                     <Icon className="h-4 w-4" />
                                     <span>{label}</span>
